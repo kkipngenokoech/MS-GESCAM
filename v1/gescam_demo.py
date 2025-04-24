@@ -11,7 +11,7 @@ import argparse
 import os
 from PIL import Image
 import matplotlib.pyplot as plt
-from gescam_inference import GazeInference
+from v1.gescam_inference import GazeInference
 
 def load_face_detector():
     """Load the OpenCV face detector"""
