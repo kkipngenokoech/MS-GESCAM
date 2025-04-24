@@ -125,15 +125,14 @@ def create_visualization_video(dataset, output_video_path, num_samples=20, fps=5
 def AnalysisMain():
     # Example usage
 
-    model_path = "best_model.pth"  # Path to your trained model
-    annotations_path = _xml_path
+    model_path = "best_model.pt"  # Path to your trained model
     test_output_dir = os.path.join(output_dir, "attention_test_results")
     xml_path = _xml_path
     dataset_path = xml_path
 
 
     # Run the test
-    test_results = test_attention_scoring(
+    test_results, temporal_data = test_attention_scoring(
         model_path=model_path,
         dataset_path=dataset_path,
         output_dir=test_output_dir,

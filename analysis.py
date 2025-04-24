@@ -572,5 +572,5 @@ def test_attention_scoring(model_path, dataset_path, output_dir, num_frames=5):
         print(f"Detected {len(temporal_data['temporal_stats']['attention_shifts'])} major attention shifts")
 
     print("\nAttention analysis testing complete!")
-    return results
+    return results, temporal_data
 
