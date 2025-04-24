@@ -1,5 +1,5 @@
 from ultralytics import YOLO
-from face_detector import face
+from v1.face_detector import face
 
 # Load the head detection model
 model = YOLO('yolov8n-head.pt')
