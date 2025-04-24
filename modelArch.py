@@ -1,6 +1,8 @@
 import torch
 
-
+# Set device
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+print(f"Using device: {device}")
 
 # Define the model architecture (same as your training script)
 class SoftAttention(torch.nn.Module):
