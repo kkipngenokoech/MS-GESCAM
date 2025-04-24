@@ -5,6 +5,8 @@ import numpy as np
 import cv2
 from tqdm import tqdm
 from analysis import test_attention_scoring
+import json
+import torch
 
 # Define the paths
 
@@ -14,6 +16,51 @@ folder = "GESCAMDATA/test_subset/task_classroom_11_video-01_final/demo"
 output_dir = "output"
 os.makedirs(output_dir, exist_ok=True)
 # Create the output directory if it doesn't exist
+
+
+
+
+def to_serializable(obj):
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
+    if isinstance(obj, torch.Tensor):
+        return obj.detach().cpu().tolist()
+    return obj
+
+
+
+
+
+def apiEndpoint(folder, xml_path=None):
+    """
+    This function is a placeholder for the API endpoint that would be used to
+    process the data. It currently does not perform any operations.'
+    """
+    
+    
+    model_path = "best_model.pt"  # Path to your trained model
+    test_output_dir = os.path.join(output_dir, "attention_test_results")
+    xml_path = _xml_path
+    dataset_path = xml_path
+
+
+    # Run the test
+    _, _, front_end = test_attention_scoring(
+        model_path=model_path,
+        dataset_path=dataset_path,
+        output_dir=test_output_dir,
+        num_frames=300
+    )
+    results_path = os.path.join(test_output_dir, "test_results.json")
+    temporal_path = os.path.join(test_output_dir, "temporal_data.json")
+    
+    with open(results_path, 'w') as f:
+        json.dump(front_end, f, indent=4, default=to_serializable)
+
+   
+
+
+    return front_end    # Save the results to a JSON file
 
 
 
@@ -142,5 +189,6 @@ def AnalysisMain():
 
 
 if __name__ == "__main__":
-    AnalysisMain()
+    # AnalysisMain()
+    apiEndpoint(folder, _xml_path)
 

@@ -8,6 +8,9 @@ from DatasetModule import GESCAMCustomDataset, get_transforms
 from modelArch import MSGESCAMModel, device
 
 
+front_end = {}
+
+
 def calculate_individual_attention(pred_heatmap, object_masks, context="lecture"):
     """
     Calculate individual attention score based on gaze heatmap and object masks
@@ -226,6 +229,7 @@ def visualize_individual_attention(frame_img, attention_data, object_names=None,
         object_names: Dictionary mapping object indices to names
         save_path: Path to save visualization
     """
+    individual_attention_scores = {}
     if object_names is None:
         object_names = {
             0: "Person/Teacher",
@@ -250,6 +254,7 @@ def visualize_individual_attention(frame_img, attention_data, object_names=None,
 
     # Add bounding boxes and scores
     for person_data in attention_data['individual_scores']:
+        person_idx = person_data['person_idx']
         x1, y1, x2, y2 = person_data['head_bbox']
         score = person_data['attention_score']
 
@@ -268,6 +273,10 @@ def visualize_individual_attention(frame_img, attention_data, object_names=None,
 
         # Add score text
         primary_obj = object_names.get(person_data['primary_object'], "Unknown")
+        individual_attention_scores[f'person {person_idx}'] = {
+            'score': score,
+            'looking_at': primary_obj
+        }
         plt.text(x1, y1-10, f"Score: {score:.2f}\nLooking at: {primary_obj}",
                 color='white', fontsize=8,
                 bbox=dict(facecolor=color, alpha=0.7))
@@ -277,14 +286,19 @@ def visualize_individual_attention(frame_img, attention_data, object_names=None,
     plt.imshow(frame_img)
 
     if attention_data['combined_heatmap'] is not None:
+        
         # Resize heatmap to match image
         h, w = frame_img.shape[:2]
         heatmap = cv2.resize(attention_data['combined_heatmap'], (w, h))
+        
+        
         plt.imshow(heatmap, cmap='jet', alpha=0.6)
 
     # Add frame stats
     stats = attention_data['frame_stats']
     most_obj = object_names.get(stats['most_attended_object'][0], "None") if stats['most_attended_object'] else "None"
+    individual_attention_scores['mean_attention'] = stats['mean_attention']
+    individual_attention_scores['most_attended_object'] = most_obj
 
     plt.title(f"Class Attention | Mean Score: {stats['mean_attention']:.2f} | " +
              f"Most Attended: {most_obj} ({stats['most_attended_object'][1] if stats['most_attended_object'] else 0} people)")
@@ -293,9 +307,12 @@ def visualize_individual_attention(frame_img, attention_data, object_names=None,
 
     if save_path:
         plt.savefig(save_path)
+        individual_attention_scores['heatmap'] = save_path
         plt.close()
     else:
         plt.show()
+        
+    return individual_attention_scores
 
 def visualize_attention_over_time(temporal_data, object_names=None, save_path=None):
     """
@@ -392,6 +409,7 @@ def visualize_attention_over_time(temporal_data, object_names=None, save_path=No
 
 
 def test_attention_scoring(model_path, dataset_path, output_dir, num_frames=5):
+    attention_scores = {}
     """
     Test the attention scoring functionality independently
 
@@ -501,16 +519,18 @@ def test_attention_scoring(model_path, dataset_path, output_dir, num_frames=5):
             device=device,
             context="lecture"  # Default context
         )
+        
 
         # Store result
         results.append({
             'frame_id': frame_id,
             'attention_data': frame_attention
         })
+        front_end[frame_id] = frame_attention
 
         # Visualize individual attention
         vis_path = os.path.join(output_dir, f"frame_{frame_id}_attention.png")
-        visualize_individual_attention(
+        individual_attention_scores = visualize_individual_attention(
             frame_img=img_vis,
             attention_data=frame_attention,
             object_names=object_names,
@@ -518,6 +538,8 @@ def test_attention_scoring(model_path, dataset_path, output_dir, num_frames=5):
         )
 
         print(f"Frame {frame_id} visualization saved to {vis_path}")
+        attention_scores[f"Frame {frame_id}"] = individual_attention_scores
+        
 
         # Print summary of this frame
         print(f"\nFrame {frame_id} Analysis Summary:")
@@ -572,5 +594,5 @@ def test_attention_scoring(model_path, dataset_path, output_dir, num_frames=5):
         print(f"Detected {len(temporal_data['temporal_stats']['attention_shifts'])} major attention shifts")
 
     print("\nAttention analysis testing complete!")
-    return results, temporal_data
+    return results, temporal_data, attention_scores
 
