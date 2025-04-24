@@ -1,0 +1,9 @@
+# Core libraries for GESCAM gaze estimation
+torch==2.6.0  # Match your installed PyTorch version (CPU version as fallback)
+torchvision
+numpy==1.26.4  # For numerical operations
+opencv-python==4.10.0.84  # For image processing and visualization
+matplotlib==3.9.2  # For plotting attention visualizations
+pillow==10.4.0  # For image handling with PIL
+tqdm==4.66.5  # For progress bars during inference
+mtcnn==0.1.1  # For face detection in multi-person frames

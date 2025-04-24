@@ -7,7 +7,7 @@ from PIL import Image
 import torchvision.transforms as transforms
 import argparse
 from tqdm import tqdm
-from v1.modelArch import MSGESCAMModel
+from modelArch import MSGESCAMModel
 
 
 class GazeInference:

@@ -239,3 +239,34 @@ class MSGESCAMModel(torch.nn.Module):
         heatmap = torch.sigmoid(heatmap)
 
         return heatmap, in_frame
+
+
+class ModelLoader:
+    """Handles loading and initialization of the MSGESCAM model."""
+    
+    def __init__(self, model_path, output_size=64, device=None):
+        self.model_path = model_path
+        self.output_size = output_size
+        self.device = device if device else torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model = self._load_model()
+        
+    def _load_model(self):
+        """Load the trained model from the specified path."""
+        if not os.path.exists(self.model_path):
+            raise FileNotFoundError(f"Model file not found: {self.model_path}")
+        
+        model = MSGESCAMModel(pretrained=False, output_size=self.output_size).to(self.device)
+        try:
+            checkpoint = torch.load(self.model_path, map_location=self.device)
+            model.load_state_dict(checkpoint['model_state_dict'])
+            print(f"Loaded model from epoch {checkpoint.get('epoch', 'unknown')}")
+        except Exception as e:
+            print(f"Error loading model: {e}")
+            print("Initializing with random weights")
+        
+        model.eval()
+        return model
+    
+    def get_model(self):
+        """Return the loaded model."""
+        return self.model
