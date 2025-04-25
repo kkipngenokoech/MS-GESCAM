@@ -456,6 +456,9 @@ def generate_live_view(upload_id, frame_idx):
     except Exception as e:
         return html.P(f"Error loading frame: {str(e)}", style={'textAlign': 'center', 'padding': '2rem'})
 
+import os
+import shutil
+
 def generate_heatmap_view(upload_id, frame_idx):
     try:
         response = requests.post(
@@ -464,10 +467,29 @@ def generate_heatmap_view(upload_id, frame_idx):
             verify=False
         )
         print(f"/visualize_frame (heatmap) response: {response.json()}")
+
         if response.status_code == 200:
-            vis_data = response.json().get('vis_image')
-            return html.P(f"Heatmap Path: {vis_data}", style={'textAlign': 'center', 'padding': '2rem'})
+            vis_data = response.json().get('vis_image')  # e.g., 'output/attention_test_results/frame_0_attention.png'
+            print(f"Heatmap data: {vis_data}")
+
+            # Copy file to /assets/ folder
+            filename = os.path.basename(vis_data)
+            target_path = os.path.join('assets', filename)
+
+            # Only copy if not already there (optional)
+            if not os.path.exists(target_path):
+                print(f"Copying {vis_data} to {target_path}")
+                shutil.copy(vis_data, target_path)
+
+            # Display from /assets
+            return html.Img(
+                src=f'/assets/{filename}',
+                style={'width': '100%', 'height': '100%', 'objectFit': 'contain'},
+                key=f"heatmap-{frame_idx}"
+            )
+
         return html.P(f"Heatmap failed: {response.json().get('error', 'Unknown error')}", style={'textAlign': 'center', 'padding': '2rem'})
+
     except Exception as e:
         return html.P(f"Heatmap error: {str(e)}", style={'textAlign': 'center', 'padding': '2rem'})
 
@@ -827,7 +849,8 @@ def debug_display_mode(display_mode):
      Input('upload-timestamp', 'data')],
     [State('historical-data', 'data'),
      State('session-data', 'data'),
-     State('upload-data', 'data')]
+     State('upload-data', 'data'),
+     ]
 )
 def update_dashboard(n, display_mode, selected_frame, upload_timestamp, historical_data, session_data, upload_data):
     print(f"update_dashboard called with display_mode: {display_mode}, selected_frame: {selected_frame}")
