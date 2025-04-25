@@ -5,19 +5,19 @@
             "looking_at": "Person/Teacher"
         },
         "person 1": {
-            "score": 0.13387828138584154,
+            "score": 0.13387826154030336,
             "looking_at": "Desk/Table"
         },
         "person 2": {
-            "score": 0.15604652249494394,
+            "score": 0.15604652249603532,
             "looking_at": "Desk/Table"
         },
         "person 3": {
-            "score": 0.15807237265471483,
+            "score": 0.15807237265180446,
             "looking_at": "Person/Teacher"
         },
         "person 4": {
-            "score": 0.18349290521691727,
+            "score": 0.18349290521582587,
             "looking_at": "Desk/Table"
         },
         "person 5": {
@@ -25,44 +25,44 @@
             "looking_at": "Desk/Table"
         },
         "person 6": {
-            "score": 0.10387237048416864,
+            "score": 0.10387236916576512,
             "looking_at": "Desk/Table"
         },
         "person 7": {
-            "score": 0.06783430064097047,
+            "score": 0.06783429542556405,
             "looking_at": "Person/Teacher"
         },
         "person 8": {
-            "score": 0.10366232143132947,
+            "score": 0.10366231623920613,
             "looking_at": "Desk/Table"
         },
         "person 9": {
-            "score": 0.11394457723217784,
+            "score": 0.11394458244758426,
             "looking_at": "Desk/Table"
         },
         "person 10": {
-            "score": 0.1562006901118366,
+            "score": 0.1562006901116547,
             "looking_at": "Desk/Table"
         },
         "person 11": {
-            "score": 0.1129142320522078,
+            "score": 0.1129142163128563,
             "looking_at": "Desk/Table"
         },
         "person 12": {
             "score": 0.1261694403392539,
             "looking_at": "Desk/Table"
         },
-        "mean_attention": 0.1252141787349851,
+        "mean_attention": 0.12521417549663824,
         "most_attended_object": "Desk/Table",
         "heatmap": "output/attention_test_results/frame_0_attention.png"
     },
     "Frame 1": {
         "person 0": {
-            "score": 0.10942332298727706,
+            "score": 0.10942332296108362,
             "looking_at": "Person/Teacher"
         },
         "person 1": {
-            "score": 0.13388253819357487,
+            "score": 0.1338825375427405,
             "looking_at": "Desk/Table"
         },
         "person 2": {
@@ -70,19 +70,19 @@
             "looking_at": "Desk/Table"
         },
         "person 3": {
-            "score": 0.15613804797103512,
+            "score": 0.15613804350068677,
             "looking_at": "Person/Teacher"
         },
         "person 4": {
-            "score": 0.1834726315304579,
+            "score": 0.18347263152827512,
             "looking_at": "Desk/Table"
         },
         "person 5": {
-            "score": 0.10723141208291054,
+            "score": 0.10723141189664602,
             "looking_at": "Desk/Table"
         },
         "person 6": {
-            "score": 0.10399977137276437,
+            "score": 0.10399976241169498,
             "looking_at": "Desk/Table"
         },
         "person 7": {
@@ -94,22 +94,22 @@
             "looking_at": "Desk/Table"
         },
         "person 9": {
-            "score": 0.1140088565152837,
+            "score": 0.11400885129987728,
             "looking_at": "Desk/Table"
         },
         "person 10": {
-            "score": 0.15620206144922122,
+            "score": 0.1562020569787819,
             "looking_at": "Desk/Table"
         },
         "person 11": {
-            "score": 0.11291548882436474,
+            "score": 0.11291548882509234,
             "looking_at": "Desk/Table"
         },
         "person 12": {
-            "score": 0.12605647446107468,
+            "score": 0.1260564699907263,
             "looking_at": "Desk/Table"
         },
-        "mean_attention": 0.12547381005758954,
+        "mean_attention": 0.12547380786894652,
         "most_attended_object": "Desk/Table",
         "heatmap": "output/attention_test_results/frame_1_attention.png"
     },
@@ -119,7 +119,7 @@
             "looking_at": "Person/Teacher"
         },
         "person 1": {
-            "score": 0.1483692044545023,
+            "score": 0.14836921339410764,
             "looking_at": "Desk/Table"
         },
         "person 2": {
@@ -127,27 +127,27 @@
             "looking_at": "Desk/Table"
         },
         "person 3": {
-            "score": 0.15349901240042524,
+            "score": 0.15349901240151664,
             "looking_at": "Person/Teacher"
         },
         "person 4": {
-            "score": 0.18445735909990618,
+            "score": 0.18445737866350095,
             "looking_at": "Person/Teacher"
         },
         "person 5": {
-            "score": 0.10572777452325682,
+            "score": 0.10572776930930558,
             "looking_at": "Desk/Table"
         },
         "person 6": {
-            "score": 0.10707686108653433,
+            "score": 0.1070768521472928,
             "looking_at": "Desk/Table"
         },
         "person 7": {
-            "score": 0.06356598739221227,
+            "score": 0.06356598739366746,
             "looking_at": "Person/Teacher"
         },
         "person 8": {
-            "score": 0.10007282268488779,
+            "score": 0.10007282707956619,
             "looking_at": "Desk/Table"
         },
         "person 9": {
@@ -155,18 +155,18 @@
             "looking_at": "Desk/Table"
         },
         "person 10": {
-            "score": 0.15548095728981937,
+            "score": 0.1554809572811791,
             "looking_at": "Desk/Table"
         },
         "person 11": {
-            "score": 0.11195930565554589,
+            "score": 0.11195930556241364,
             "looking_at": "Desk/Table"
         },
         "person 12": {
-            "score": 0.12875903005151487,
+            "score": 0.12875903005169675,
             "looking_at": "Desk/Table"
         },
-        "mean_attention": 0.1239657081057535,
+        "mean_attention": 0.12396570954003365,
         "most_attended_object": "Desk/Table",
         "heatmap": "output/attention_test_results/frame_2_attention.png"
     },
@@ -180,7 +180,7 @@
             "looking_at": "Desk/Table"
         },
         "person 2": {
-            "score": 0.1512800995104044,
+            "score": 0.15128009983673107,
             "looking_at": "Desk/Table"
         },
         "person 3": {
@@ -188,11 +188,11 @@
             "looking_at": "Person/Teacher"
         },
         "person 4": {
-            "score": 0.17869895354779147,
+            "score": 0.17869895358890062,
             "looking_at": "Person/Teacher"
         },
         "person 5": {
-            "score": 0.10607147876326053,
+            "score": 0.10607147876289673,
             "looking_at": "Desk/Table"
         },
         "person 6": {
@@ -200,15 +200,15 @@
             "looking_at": "Desk/Table"
         },
         "person 7": {
-            "score": 0.0626329008504399,
+            "score": 0.06263289973285281,
             "looking_at": "Person/Teacher"
         },
         "person 8": {
-            "score": 0.1125039989768993,
+            "score": 0.11250399898854083,
             "looking_at": "Desk/Table"
         },
         "person 9": {
-            "score": 0.13174521377222845,
+            "score": 0.1317452137809596,
             "looking_at": "Desk/Table"
         },
         "person 10": {
@@ -216,14 +216,14 @@
             "looking_at": "Desk/Table"
         },
         "person 11": {
-            "score": 0.1163296567778161,
+            "score": 0.11632965677745231,
             "looking_at": "Desk/Table"
         },
         "person 12": {
-            "score": 0.1060112210911029,
+            "score": 0.10601122053194557,
             "looking_at": "Desk/Table"
         },
-        "mean_attention": 0.12139347716934373,
+        "mean_attention": 0.12139347707013887,
         "most_attended_object": "Desk/Table",
         "heatmap": "output/attention_test_results/frame_8_attention.png"
     }

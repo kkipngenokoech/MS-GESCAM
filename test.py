@@ -58,7 +58,8 @@ def apiEndpoint(folder, xml_path=None):
     with open(results_path, 'w') as f:
         json.dump(front_end, f, indent=4, default=to_serializable)
 
-   
+    print(f"Results saved to {results_path}")
+    print(front_end)
 
 
     return front_end    # Save the results to a JSON file
@@ -177,7 +178,8 @@ def AnalysisMain(_video_path):
         data_dir="GESCAMDATA/",
         output_frame_base_dir="GESCAMDATA/video2frames/extraxted_frames/task_classroom_11_video-01_final"
     )
-    apiEndpoint(folder, _xml_path)
+    front_end = apiEndpoint(folder, _xml_path)
+    return front_end
 
 if __name__ == "__main__":
     # Corrected: Remove trailing comma to ensure video_path is a string
